@@ -15,7 +15,6 @@ export const App = () => {
     <Layout>
       <AddForm />
       <ContactFilter />
-      <Spinner />
       {isLoading && !error && <Spinner />}
       <ContactList />
       <GlobalStyle />
