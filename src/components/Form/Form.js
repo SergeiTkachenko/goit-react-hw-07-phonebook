@@ -2,8 +2,8 @@ import { Formik, Field } from 'formik';
 import { FormField, Form, ErrorMessage } from './Form.styled';
 import { object, string } from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
-import { nanoid } from 'nanoid';
+import { addContact } from 'redux/operations';
+// import { nanoid } from 'nanoid';
 import { selectContacts } from 'redux/selectors';
 
 const ValidSchema = object().shape({
@@ -31,7 +31,7 @@ export const AddForm = () => {
       alert('contact already exists');
       return;
     }
-    dispatch(addContact({ name, number, id: nanoid() }));
+    dispatch(addContact({ name, number }));
     resetForm();
   };
 

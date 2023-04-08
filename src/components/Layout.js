@@ -6,6 +6,8 @@ export const Layout = styled.div`
     #052650 9% 9%,
     #383781ff 10% 10%
   );
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   box-shadow: 0 0 10px #380bdccc, 0 0 20px #380bdccc, 0 0 22px #380bdccc,
     0 0 25px #380bdccc, 0 0 30px #380bdccc, 0 0 32px #380bdccc,
     0 0 36px #380bdccc, 0 0 55px #380bdccc, 0 0 66px #380bdccc;

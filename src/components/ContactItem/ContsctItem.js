@@ -2,17 +2,17 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { Item } from './ContactItem.styled';
 import { useDispatch } from 'react-redux';
-import { delContact, editContact } from 'redux/contactsSlice';
+import { deleteContact, editContact } from 'redux/operations';
 
-export const ContactItem = ({ item: { id, name, number } }) => {
+export const ContactItem = ({ name, number, id }) => {
   const [editName, setEditName] = useState(name);
   const [editNumber, setEditNumber] = useState(number);
   const [isEdit, setIsEdit] = useState(false);
 
   const dispatch = useDispatch();
 
-  const handleDelContact = () => {
-    dispatch(delContact(id));
+  const handleDelContact = id => {
+    dispatch(deleteContact(id));
   };
 
   const handleEditContact = () => {
@@ -51,15 +51,13 @@ export const ContactItem = ({ item: { id, name, number } }) => {
         </>
       )}
       <button onClick={handleEditContact}>{isEdit ? 'Save' : 'Edit'}</button>
-      <button onClick={handleDelContact}>Delete</button>
+      <button onClick={() => handleDelContact(id)}>Delete</button>
     </Item>
   );
 };
 
 ContactItem.propTypes = {
-  item: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-  }).isRequired,
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
 };
